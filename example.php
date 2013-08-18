@@ -13,6 +13,11 @@ $form->addValues(array(
 ));
 
 echo $form->create('/url');
-	echo $form->input('field_lol');
+	echo $form->input('field', 'text', array(
+		'label' => array(
+			'text' => 'hahahah lolo',
+			'class' => 'true'
+		)
+	));
 	echo $form->textarea('bio');
 echo $form->end('Submit');

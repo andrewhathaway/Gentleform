@@ -74,14 +74,7 @@ class GentleForm {
 		$label = '';
 
 		if($this->auto_label) {
-			$label_text = $name;
-
-			// if(isset($params['label'])) {
-
-			// }
-
-			$label_text = $this->humanize($label_text);
-			$label = $this->label($label_text);
+			$label = $this->prepare_label($name, $params);
 		}
 
 		$string = $label . '<input';
@@ -134,6 +127,33 @@ class GentleForm {
 
 		$string .= $this->to_attr_string($params) . '>' . $text . '</label>' . PHP_EOL;
 		return $string;
+	}
+
+	public function prepare_label($label_text, &$params = array()) {
+		$label = '';
+
+		if(!isset($params['label'])) {
+			$label_text = $this->humanize($label_text);
+			$label = $this->label($label_text);
+		} else {
+			if(!$params['label']) {
+				unset($params['label']);
+				return $label;
+			}
+
+			if(!is_array($params['label'])) {
+				$label_text = $this->humanize($params['label']);
+				$label = $this->label($label_text);
+			} else {
+				$label_text = $this->humanize($params['label']['text']);
+
+				unset($params['label']['text']);
+				$label = $this->label($label_text, $params['label']);
+			}
+		}
+
+		unset($params['label']);
+		return $label;
 	}
 
 	/**
