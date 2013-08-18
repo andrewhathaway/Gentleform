@@ -9,11 +9,10 @@ $form->addErrors(array(
 ));
 
 $form->addValues(array(
-	'field' => 'andrew@andrewhathaway.net',
-	'test' => 'This is the users bio text'
+	'field' => 'andrew@andrewhathaway.net'
 ));
 
 echo $form->create('/url');
-	echo $form->input('field', 'text');
+	echo $form->input('field');
 	echo $form->textarea('test');
 echo $form->end('Submit');

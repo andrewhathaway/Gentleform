@@ -110,6 +110,19 @@ class GentleForm {
 	}
 
 	/**
+	 * Creates a HTML label
+	 * @param  string $text  The label text
+	 * @param  array $param  Parameters for the label
+	 * @return string        HTML label
+	 */
+	public function label($text, $params = array()) {
+		$string = '<label';
+
+		$string .= $this->to_attr_string($params) . '>' . $text . '</label>' . PHP_EOL;
+		return $string;
+	}
+
+	/**
 	 * Add errors to form inputs
 	 * @param array $erorrs Array of errors - field => message
 	 */
