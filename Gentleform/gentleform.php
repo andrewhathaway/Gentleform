@@ -57,7 +57,8 @@ class GentleForm {
 
 		$string .= '</form>';
 
-		unset($this->input_errors, $this->input_values);
+		$this->clearErrors();
+		$this->clearValues();
 
 		return $string;
 	}
@@ -70,7 +71,20 @@ class GentleForm {
 	 * @return string         Rendered input HTML
 	 */
 	public function input($name, $type = 'text', $params = array()) {
-		$string = '<input';
+		$label = '';
+
+		if($this->auto_label) {
+			$label_text = $name;
+
+			// if(isset($params['label'])) {
+
+			// }
+
+			$label_text = $this->humanize($label_text);
+			$label = $this->label($label_text);
+		}
+
+		$string = $label . '<input';
 
 		$extras = array(
 			'type' => $type,
@@ -139,6 +153,20 @@ class GentleForm {
 	}
 
 	/**
+	 * Clears the errors array
+	 */
+	public function clearErrors() {
+		$this->input_errors = array();
+	}
+
+	/**
+	 * Clears the values array
+	 */
+	public function clearValues() {
+		$this->input_values = array();
+	}
+
+	/**
 	 * Merge an array and create the attribute string
 	 * @param  arrray $array_one First array to merge
 	 * @param  array $array_two  Second array to merge
@@ -182,5 +210,18 @@ class GentleForm {
 
 		return $string;
 	}
+
+	/**
+	 * Humanize a string
+	 * - http://www.westhost.com/contest/php/function/string-utils/82
+	 * @param  string $str Un-human string
+	 * @return String      Human string
+	 */
+	private function humanize($string) {
+		$result = strtolower(trim($string));
+		$result = ucwords(preg_replace('/[_]+/', ' ', $result));
+
+		return $result;
+    }
 
 }
