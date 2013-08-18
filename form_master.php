@@ -58,10 +58,13 @@ class FormMaster {
 	public function input($name, $type = 'text', $params = array()) {
 		$string = '<input';
 
-		$attributes = $this->prepare_fields(array(
+		$extras = array(
 			'type' => $type,
 			'name' => $name
-		), $params);
+		);
+
+		$extras = array_merge($extras, $this->prepare_extras($name));
+		$attributes = $this->prepare_fields($extras, $params);
 
 		$string .= $attributes . '>' . PHP_EOL;
 
@@ -90,9 +93,28 @@ class FormMaster {
 	 * @param  array $array_two  Second array to merge
 	 * @return string            Attribute string
 	 */
-	public function prepare_fields($array_one, $array_two) {
+	private function prepare_fields($array_one, $array_two) {
 		$array = array_merge($array_one, $array_two);
 		return $this->to_attr_string($array);
+	}
+
+	/**
+	 * Prepares values and errors for fields
+	 * @param  string $name The name of the field
+	 * @return array        The array of extras
+	 */
+	private function prepare_extras($name) {
+		$extras = array();
+
+		if(isset($this->input_values[$name])) {
+			$extras['value'] = $this->input_values[$name];
+		}
+
+		if(isset($this->input_errors[$name])) {
+			$extras['data-error'] = $this->input_errors[$name];
+		}
+
+		return $extras;
 	}
 
 	/**
