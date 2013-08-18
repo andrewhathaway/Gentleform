@@ -245,7 +245,7 @@ class GentleForm {
 
 	/**
 	 * Humanize a string
-	 * - http://www.westhost.com/contest/php/function/string-utils/82
+	 * http://www.westhost.com/contest/php/function/string-utils/82
 	 * @param  string $str Un-human string
 	 * @return String      Human string
 	 */
