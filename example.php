@@ -1,6 +1,6 @@
 <?php
 
-require('gentleform.php');
+require('Gentleform/gentleform.php');
 $form = new GentleForm;
 
 $form->addErrors(array(
