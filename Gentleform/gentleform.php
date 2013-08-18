@@ -93,7 +93,13 @@ class GentleForm {
 	}
 
 	public function textarea($name, $params = array()) {
-		$string = '<textarea';
+		$label = '';
+
+		if($this->auto_label) {
+			$label = $this->prepare_label($name, $params);
+		}
+
+		$string = $label . '<textarea';
 
 		$extras = array(
 			'name' => $name
