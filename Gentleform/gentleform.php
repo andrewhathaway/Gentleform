@@ -129,6 +129,12 @@ class GentleForm {
 		return $string;
 	}
 
+	/**
+	 * Prepares a label for an input
+	 * @param  string $label_text String text for the label
+	 * @param  array  $params     Label parameters
+	 * @return [type]             The HTML label
+	 */
 	public function prepare_label($label_text, &$params = array()) {
 		$label = '';
 

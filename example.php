@@ -16,8 +16,21 @@ echo $form->create('/url');
 	echo $form->input('field', 'text', array(
 		'label' => array(
 			'text' => 'hahahah lolo',
-			'class' => 'true'
+			'class' => 'test'
 		)
 	));
+
+	echo $form->input('auto_label');
+
+	echo $form->input('no_label', 'text', array(
+		'label' => false
+	));
+
+	echo $form->input('custom_text_label', 'text', array(
+		'label' => array(
+			'text' => 'This label should have custom text!'
+		)
+	));
+
 	echo $form->textarea('bio');
 echo $form->end('Submit');
