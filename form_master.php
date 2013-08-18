@@ -45,6 +45,8 @@ class FormMaster {
 
 		$string .= '</form>';
 
+		unset($this->input_errors, $this->input_values);
+
 		return $string;
 	}
 
@@ -67,6 +69,30 @@ class FormMaster {
 		$attributes = $this->prepare_fields($extras, $params);
 
 		$string .= $attributes . '>' . PHP_EOL;
+
+		return $string;
+	}
+
+	public function textarea($name, $params = array()) {
+		$string = '<textarea';
+
+		$extras = array(
+			'name' => $name
+		);
+
+		if(isset($this->input_errors[$name])) {
+			$extras['data-error'] = $this->input_errors[$name];
+		}
+
+		$attributes = $this->prepare_fields($extras, $params);
+
+		$string .= $attributes . '>';
+
+		if(isset($this->input_values[$name])) {
+			$string .= $this->input_values[$name];
+		}
+
+		$string .= '</textarea>';
 
 		return $string;
 	}
