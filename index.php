@@ -1,8 +1,7 @@
 <?php
 
-require('form_master.php');
-
-$form = new FormMaster;
+require('gentleform.php');
+$form = new GentleForm;
 
 $form->addErrors(array(
 	'field' => 'Just an error message.',
@@ -15,9 +14,6 @@ $form->addValues(array(
 ));
 
 echo $form->create('/url');
-
 	echo $form->input('field', 'text');
-
 	echo $form->textarea('test');
-
 echo $form->end('Submit');
