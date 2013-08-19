@@ -47,12 +47,7 @@ class GentleForm {
 		$string = '';
 
 		if($text) {
-			$attributes = $this->prepare_fields(array(
-				'type' => 'submit',
-				'value' => $text
-			), $params);
-
-			$string .= '<input' . $attributes . '>';
+			$string .= $this->submit($text, $params);
 		}
 
 		$string .= '</form>';
