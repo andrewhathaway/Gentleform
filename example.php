@@ -33,4 +33,6 @@ echo $form->create('/url');
 	));
 
 	echo $form->textarea('bio');
-echo $form->end('Submit');
+
+	echo $form->submit('Submit it', array('class' => 'button'));
+echo $form->end('Roll');

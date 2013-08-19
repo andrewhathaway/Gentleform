@@ -46,7 +46,7 @@ class GentleForm {
 	public function end($text = null, $params = array()) {
 		$string = '';
 
-		if(!is_null($text)) {
+		if($text) {
 			$attributes = $this->prepare_fields(array(
 				'type' => 'submit',
 				'value' => $text
@@ -59,6 +59,25 @@ class GentleForm {
 
 		$this->clearErrors();
 		$this->clearValues();
+
+		return $string;
+	}
+
+	/**
+	 * Create a submit button
+	 * @param  string $text   The button text
+	 * @param  array  $params Parameteres for the input
+	 * @return string         HTML submit button
+	 */
+	public function submit($text = 'Submit', $params = array()) {
+		$string = '<input';
+
+		$attributes = $this->prepare_fields(array(
+			'type' => 'submit',
+			'value' => $text
+		), $params);
+
+		$string .= $attributes . '>';
 
 		return $string;
 	}
