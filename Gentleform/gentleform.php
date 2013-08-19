@@ -32,7 +32,7 @@ class GentleForm {
 			'method' => $method
 		);
 
-		$string .= $this->prepare_fields($extras, $params) . '>' . PHP_EOL;
+		$string .= $this->prepare_fields($extras, $params) . '>';
 
 		return $string;
 	}
@@ -52,7 +52,7 @@ class GentleForm {
 				'value' => $text
 			), $params);
 
-			$string .= '<input' . $attributes . '>' . PHP_EOL;
+			$string .= '<input' . $attributes . '>';
 		}
 
 		$string .= '</form>';
@@ -64,7 +64,7 @@ class GentleForm {
 	}
 
 	/**
-	 * [input description]
+	 * Create an input
 	 * @param  string $name   Input name
 	 * @param  string $type   Input type
 	 * @param  array  $params Input parameters
@@ -87,11 +87,17 @@ class GentleForm {
 		$extras = array_merge($extras, $this->prepare_extras($name));
 		$attributes = $this->prepare_fields($extras, $params);
 
-		$string .= $attributes . '>' . PHP_EOL;
+		$string .= $attributes . '>';
 
 		return $string;
 	}
 
+	/**
+	 * Create a textarea
+	 * @param  string $name   The name of the field
+	 * @param  array  $params Parameters for the field
+	 * @return string         HTML textarea
+	 */
 	public function textarea($name, $params = array()) {
 		$label = '';
 
@@ -117,7 +123,7 @@ class GentleForm {
 			$string .= $this->input_values[$name];
 		}
 
-		$string .= '</textarea>' . PHP_EOL;
+		$string .= '</textarea>';
 
 		return $string;
 	}
@@ -131,7 +137,7 @@ class GentleForm {
 	public function label($text, $params = array()) {
 		$string = '<label';
 
-		$string .= $this->to_attr_string($params) . '>' . $text . '</label>' . PHP_EOL;
+		$string .= $this->to_attr_string($params) . '>' . $text . '</label>';
 		return $string;
 	}
 
