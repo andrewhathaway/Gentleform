@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Gentleform
+ * Forms like a gentleman in PHP.
+ *
+ * @author Andrew Hathaway <andrew@andrewhathaway.net>
+ */
+
 class GentleForm {
 
 	/**
