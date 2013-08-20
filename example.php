@@ -35,4 +35,4 @@ echo $form->create('/url');
 	echo $form->textarea('bio');
 
 	echo $form->submit('Submit it', array('class' => 'button'));
-echo $form->end(null);
+echo $form->end();

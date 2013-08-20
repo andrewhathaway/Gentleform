@@ -50,7 +50,7 @@ class GentleForm {
 	 * @param  array  $params Array of options
 	 * @return string         The form end
 	 */
-	public function end($text = null, $params = array()) {
+	public function end($text = 'Submit', $params = array()) {
 		$string = '';
 
 		if($text) {
