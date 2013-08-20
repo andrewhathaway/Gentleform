@@ -18,9 +18,9 @@ Gentleforms is easy to use.
 This function creates a form with the URL given, the method and then any params are converted in to attributes.
 
 ```PHP
-	echo $form->create('/login', 'post', array(
-		'class' => 'nice-form'
-	));
+echo $form->create('/login', 'post', array(
+	'class' => 'nice-form'
+));
 ```
 
 
