@@ -10,6 +10,7 @@ Whilst working on [Blogcase](http://blogcase.co.uk), I wanted a nice form librar
 - Rewrite the prepare_label function, it's not nice
 - Support for other form input types etc
 - Refactor, rewrite, fix
+- Make how errors are printed customisable
 
 ##Documentation
 Gentleforms is easy to use. Remember that form parameters get converted in to attributes. Start by:
@@ -80,6 +81,56 @@ echo $form->input('first_name', 'text', array(
 ));
 ```
 
+####textarea($name, $params = array())
+Creates a textarea with the name and params given.
+
+```PHP
+echo $form->textarea('user_bio', array(
+	'class' => 'big-box'
+));
+```
+
+####label($text, $params = array())
+Manually create a label with the text and params passed.
+
+```PHP
+echo $form->label('User Biography', array(
+	'class' => 'margin-bottom'
+));
+```
+
+####Errors and values
+These functions are what makes Gentleform nice to use. Instead of having exposed ifs and echos for values and errors, we use the following functions to make our code pretty.
+
+#####addErrors($errors = array())
+This function adds errors to the form. These errors are added on to the attrbutes of inputs or textareas as a ```data-error``` attribute. This is how errors are shown on Blogcase. The array passed in uses the field name as the key, and the error text as the value.
+
+```PHP
+$form->addErrors(array(
+	'user_bio' => 'Max length of 255 characters for a users biography',
+	'first_name' => 'This cannot be blank'
+));
+```
+
+These errors are then automatically added when the input is echo'd.
+
+#####addValues($values = array())
+Just like errors, you pass in an array of values for the fields. The form name as the key, and the value as the...value. These will then be added to inputs as values, or textareas as the child text.
+
+```PHP
+$form->addValues(array(
+	'user_bio' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit officiis nostrum quasi eius nam rem provident? Magnam odit laborum aliquam nulla modi quia doloremque minus dolores! Debitis, temporibus iure quos.',
+	'first_name' => ''
+));
+```
+
+#####clearErrors() & clearValues()
+You can clear the values or errors stored manually. These functions are called when you end a form.
+
+```PHP
+$form->clearErrors();
+$form->clearValues();
+```
 
 ##Helping
 Feel free to help out and submit pull requests! Also feel free to give feedback and tweet me on your wanting to ask questions.
