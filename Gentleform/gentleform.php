@@ -212,6 +212,34 @@ class GentleForm {
 	}
 
 	/**
+	 * Remove a certain error, or groups
+	 * @param  string/array $name The name of the field to remove
+	 */
+	public function removeError($name) {
+		if(!is_array($name)) {
+			unset($this->input_errors[$name]);
+		} else {
+			foreach($name as $key) {
+				unset($this->input_errors[$name]);
+			}
+		}
+	}
+
+	/**
+	 * Remove a certain value, or a group
+	 * @param  string/array $name The name of the field to remove
+	 */
+	public function removeValue($name) {
+		if(!is_array($name)) {
+			unset($this->input_values[$name]);
+		} else {
+			foreach($name as $key) {
+				unset($this->input_values[$name]);
+			}
+		}
+	}
+
+	/**
 	 * Clears the errors array
 	 */
 	public function clearErrors() {
