@@ -27,17 +27,20 @@ $this->auto_label = false;
 ```
 
 #####Configuring labels
-When using input() or textarea() you can pass a 'label' item in to the $params array. Some examples are:
+When using ```input()``` or ```textarea()``` you can pass a ```label``` item in to the $params array. Some examples are:
 
 ```PHP
-echo $this->input('your_name'); //Will create a label with "Your Name" contents
+//Will create a label with "Your Name" contents
+echo $this->input('your_name');
 
-echo $this->input('your_name', array('label' => false)); //Will not create a label
+//Will not create a label
+echo $this->input('your_name', 'text, array('label' => false));
 
-echo $this->input('your_name', array('label' => 'Your Name Please!')); //Will create a label with "Your Name Please!" contents
+//Will create a label with "Your Name Please!" contents
+echo $this->input('your_name', 'text, array('label' => 'Your Name Please!'));
 
 //Creates the lable with text "Enter your name", with the class "margin-bottom" and the for attribute of "your_name"
-echo $this->input('your_name', array('label' => array(
+echo $this->input('your_name', 'text, array('label' => array(
 	'text' => 'Enter your name',
 	'class' => 'margin-bottom',
 	'for' => 'your_name'
