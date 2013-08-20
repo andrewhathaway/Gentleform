@@ -12,7 +12,17 @@ Whilst working on [Blogcase](http://blogcase.co.uk), I wanted a nice form librar
 - [ ] Refactor, rewrite, fix
 
 ##Documentation
-Docs for this....
+Gentleforms is easy to use.
+
+####Create($url, $method='post', $params = array())
+This function creates a form with the URL given, the method and then any params are converted in to attributes.
+
+```PHP
+	echo $form->create('/login', 'post', array(
+		'class' => 'nice-form'
+	));
+```
+
 
 ##Helping
 Feel free to help out and submit pull requests! Also feel free to give feedback and tweet me on your wanting to ask questions.
