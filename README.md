@@ -132,6 +132,20 @@ $form->clearErrors();
 $form->clearValues();
 ```
 
+#####removeError($name) and removeValue($name)
+You can use these functions to remove a group of errors/values, or just one. Pass in a field name or an array of field names and they will be unset.
+
+```PHP
+//Pass in an array of field names
+$form->removeError(array(
+	'user_bio',
+	'first_name'
+));
+
+//Pass in a single field name
+$form->removeValue('user_bio');
+```
+
 ##Helping
 Feel free to help out and submit pull requests! Also feel free to give feedback and tweet me on your wanting to ask questions.
 
