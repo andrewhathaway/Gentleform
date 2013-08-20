@@ -15,8 +15,8 @@ Whilst working on [Blogcase](http://blogcase.co.uk), I wanted a nice form librar
 Gentleforms is easy to use. Start by:
 
 ```PHP
-	require('gentleform.php');
-	$form = new Gentleform;
+require('gentleform.php');
+$form = new Gentleform;
 ```
 
 ####create($url, $method='post', $params = array())
