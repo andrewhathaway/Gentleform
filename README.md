@@ -12,11 +12,36 @@ Whilst working on [Blogcase](http://blogcase.co.uk), I wanted a nice form librar
 - Refactor, rewrite, fix
 
 ##Documentation
-Gentleforms is easy to use. Start by:
+Gentleforms is easy to use. Remember that form parameters get converted in to attributes. Start by:
 
 ```PHP
 require('gentleform.php');
 $form = new Gentleform;
+```
+
+####Configuration
+Labels will automatically be created for inputs and textareas, the text will be a humanized version of the ```name``` attribute. This can be turned off by doing the following:
+
+```PHP
+$this->auto_label = false;
+```
+
+#####Configuring labels
+When using input() or textarea() you can pass a 'label' item in to the $params array. Some examples are:
+
+```PHP
+echo $this->input('your_name'); //Will create a label with "Your Name" contents
+
+echo $this->input('your_name', array('label' => false)); //Will not create a label
+
+echo $this->input('your_name', array('label' => 'Your Name Please!')); //Will create a label with "Your Name Please!" contents
+
+//Creates the lable with text "Enter your name", with the class "margin-bottom" and the for attribute of "your_name"
+echo $this->input('your_name', array('label' => array(
+	'text' => 'Enter your name',
+	'class' => 'margin-bottom',
+	'for' => 'your_name'
+)));
 ```
 
 ####create($url, $method='post', $params = array())
@@ -34,6 +59,22 @@ Ends a form. Automatically creates a submit button with the text and parameters 
 ```PHP
 echo $form->end(false); //</form>
 echo $form->end('Roll with it', $params);
+```
+
+####submit($text = 'Submit', $params = array())
+Creates a submit button, with the text and params supplied.
+
+```PHP
+echo $form->submit('Button', $params);
+```
+
+####input($name, $type = 'text', $params = array())
+Creates an input with the name, type and params given.
+
+```PHP
+echo $form->input('first_name', 'text', array(
+	'class' => 'full'
+));
 ```
 
 
