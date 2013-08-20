@@ -35,13 +35,13 @@ When using ```input()``` or ```textarea()``` you can pass a ```label``` item in 
 echo $this->input('your_name');
 
 //Will not create a label
-echo $this->input('your_name', 'text, array('label' => false));
+echo $this->input('your_name', 'text', array('label' => false));
 
 //Will create a label with "Your Name Please!" contents
-echo $this->input('your_name', 'text, array('label' => 'Your Name Please!'));
+echo $this->input('your_name', 'text', array('label' => 'Your Name Please!'));
 
 //Creates the lable with text "Enter your name", with the class "margin-bottom" and the for attribute of "your_name"
-echo $this->input('your_name', 'text, array('label' => array(
+echo $this->input('your_name', 'text', array('label' => array(
 	'text' => 'Enter your name',
 	'class' => 'margin-bottom',
 	'for' => 'your_name'

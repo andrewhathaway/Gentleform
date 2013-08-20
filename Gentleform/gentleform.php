@@ -12,17 +12,17 @@ class GentleForm {
 	/**
 	 * Errors for fields
 	 */
-	private $input_errors = array();
+	private $inputErrors = array();
 
 	/**
 	 * Values for fields
 	 */
-	private $input_values = array();
+	private $inputValues = array();
 
 	/**
 	 * Automatically create labels for inputs
 	 */
-	public $auto_label = true;
+	public $autoLabel = true;
 
 	/**
 	 * The start of the form creation
@@ -39,7 +39,7 @@ class GentleForm {
 			'method' => $method
 		);
 
-		$string .= $this->prepare_fields($extras, $params) . '>';
+		$string .= $this->prepareFields($extras, $params) . '>';
 
 		return $string;
 	}
@@ -74,7 +74,7 @@ class GentleForm {
 	public function submit($text = 'Submit', $params = array()) {
 		$string = '<input';
 
-		$attributes = $this->prepare_fields(array(
+		$attributes = $this->prepareFields(array(
 			'type' => 'submit',
 			'value' => $text
 		), $params);
@@ -94,8 +94,8 @@ class GentleForm {
 	public function input($name, $type = 'text', $params = array()) {
 		$label = '';
 
-		if($this->auto_label) {
-			$label = $this->prepare_label($name, $params);
+		if($this->autoLabel) {
+			$label = $this->prepareLabel($name, $params);
 		}
 
 		$string = $label . '<input';
@@ -105,8 +105,8 @@ class GentleForm {
 			'name' => $name
 		);
 
-		$extras = array_merge($extras, $this->prepare_extras($name));
-		$attributes = $this->prepare_fields($extras, $params);
+		$extras = array_merge($extras, $this->prepareExtras($name));
+		$attributes = $this->prepareFields($extras, $params);
 
 		$string .= $attributes . '>';
 
@@ -122,8 +122,8 @@ class GentleForm {
 	public function textarea($name, $params = array()) {
 		$label = '';
 
-		if($this->auto_label) {
-			$label = $this->prepare_label($name, $params);
+		if($this->autoLabel) {
+			$label = $this->prepareLabel($name, $params);
 		}
 
 		$string = $label . '<textarea';
@@ -132,16 +132,16 @@ class GentleForm {
 			'name' => $name
 		);
 
-		if(isset($this->input_errors[$name])) {
-			$extras['data-error'] = $this->input_errors[$name];
+		if(isset($this->inputErrors[$name])) {
+			$extras['data-error'] = $this->inputErrors[$name];
 		}
 
-		$attributes = $this->prepare_fields($extras, $params);
+		$attributes = $this->prepareFields($extras, $params);
 
 		$string .= $attributes . '>';
 
-		if(isset($this->input_values[$name])) {
-			$string .= $this->input_values[$name];
+		if(isset($this->inputValues[$name])) {
+			$string .= $this->inputValues[$name];
 		}
 
 		$string .= '</textarea>';
@@ -158,7 +158,7 @@ class GentleForm {
 	public function label($text, $params = array()) {
 		$string = '<label';
 
-		$string .= $this->to_attr_string($params) . '>' . $text . '</label>';
+		$string .= $this->toAttrString($params) . '>' . $text . '</label>';
 		return $string;
 	}
 
@@ -168,7 +168,7 @@ class GentleForm {
 	 * @param  array  $params     Label parameters
 	 * @return [type]             The HTML label
 	 */
-	public function prepare_label($label_text, &$params = array()) {
+	public function prepareLabel($label_text, &$params = array()) {
 		$label = '';
 
 		if(!isset($params['label'])) {
@@ -200,7 +200,7 @@ class GentleForm {
 	 * @param array $erorrs Array of errors - field => message
 	 */
 	public function addErrors($errors = array()) {
-		$this->input_errors = array_merge($this->input_errors, $errors);
+		$this->inputErrors = array_merge($this->inputErrors, $errors);
 	}
 
 	/**
@@ -208,7 +208,7 @@ class GentleForm {
 	 * @param array $values Array of values - field => value
 	 */
 	public function addValues($values = array()) {
-		$this->input_values = array_merge($this->input_values, $values);
+		$this->inputValues = array_merge($this->inputValues, $values);
 	}
 
 	/**
@@ -217,10 +217,10 @@ class GentleForm {
 	 */
 	public function removeError($name) {
 		if(!is_array($name)) {
-			unset($this->input_errors[$name]);
+			unset($this->inputErrors[$name]);
 		} else {
 			foreach($name as $key) {
-				unset($this->input_errors[$name]);
+				unset($this->inputErrors[$name]);
 			}
 		}
 	}
@@ -231,10 +231,10 @@ class GentleForm {
 	 */
 	public function removeValue($name) {
 		if(!is_array($name)) {
-			unset($this->input_values[$name]);
+			unset($this->inputValues[$name]);
 		} else {
 			foreach($name as $key) {
-				unset($this->input_values[$name]);
+				unset($this->inputValues[$name]);
 			}
 		}
 	}
@@ -243,14 +243,14 @@ class GentleForm {
 	 * Clears the errors array
 	 */
 	public function clearErrors() {
-		$this->input_errors = array();
+		$this->inputErrors = array();
 	}
 
 	/**
 	 * Clears the values array
 	 */
 	public function clearValues() {
-		$this->input_values = array();
+		$this->inputValues = array();
 	}
 
 	/**
@@ -259,9 +259,9 @@ class GentleForm {
 	 * @param  array $array_two  Second array to merge
 	 * @return string            Attribute string
 	 */
-	private function prepare_fields($array_one, $array_two) {
+	private function prepareFields($array_one, $array_two) {
 		$array = array_merge($array_one, $array_two);
-		return $this->to_attr_string($array);
+		return $this->toAttrString($array);
 	}
 
 	/**
@@ -269,15 +269,15 @@ class GentleForm {
 	 * @param  string $name The name of the field
 	 * @return array        The array of extras
 	 */
-	private function prepare_extras($name) {
+	private function prepareExtras($name) {
 		$extras = array();
 
-		if(isset($this->input_values[$name])) {
-			$extras['value'] = $this->input_values[$name];
+		if(isset($this->inputValues[$name])) {
+			$extras['value'] = $this->inputValues[$name];
 		}
 
-		if(isset($this->input_errors[$name])) {
-			$extras['data-error'] = $this->input_errors[$name];
+		if(isset($this->inputErrors[$name])) {
+			$extras['data-error'] = $this->inputErrors[$name];
 		}
 
 		return $extras;
@@ -288,7 +288,7 @@ class GentleForm {
 	 * @param  array $attributes  Array of attributes
 	 * @return string             String of attributes
 	 */
-	private function to_attr_string($attributes) {
+	private function toAttrString($attributes) {
 		$string = '';
 
 		foreach($attributes as $attribute => $value) {
