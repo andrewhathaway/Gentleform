@@ -13,6 +13,7 @@ $form->addValues(array(
 ));
 
 echo $form->create('/url');
+
 	echo $form->input('field', 'text', array(
 		'label' => array(
 			'text' => 'hahahah lolo',
@@ -34,5 +35,10 @@ echo $form->create('/url');
 
 	echo $form->textarea('bio');
 
+	echo $form->option('category', array(
+		'test' => 'hahahah'
+	));
+
 	echo $form->submit('Submit it', array('class' => 'button'));
+
 echo $form->end();

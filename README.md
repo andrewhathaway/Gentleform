@@ -3,4 +3,18 @@ Gentleform
 
 Forms like a gentleman in PHP.
 
-- Andrew Hathaway - @andrewhathaway
+Whilst working on [Blogcase](http://blogcase.co.uk), I wanted a nice form library to save me from the hell of dirty markup and code. I had disgusting if's and echo's here there an everywhere to print values and custom errors. No other nice libraries existed, that game me the simplicity and style that I wanted when creating the forms for Blogcase. So I created Gentleforms, a gentlemanly way of doing forms in PHP.
+
+##TODO
+- [ ] Support for radio buttons, checkboxes and select menus
+- [ ] Rewrite the prepare_label function, it's not nice
+- [ ] Support for other form input types etc
+- [ ] Refactor, rewrite, fix
+
+##Documentation
+Docs for this....
+
+##Helping
+Feel free to help out and submit pull requests! Also feel free to give feedback and tweet me on your wanting to ask questions.
+
+[@andrewhathaway](http://twitter.com/andrewhathaway)
