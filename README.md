@@ -24,7 +24,7 @@ $form = new Gentleform;
 Labels will automatically be created for inputs and textareas, the text will be a humanized version of the ```name``` attribute. This can be turned off by doing the following:
 
 ```PHP
-$this->auto_label = false;
+$this->autoLabel = false;
 ```
 
 #####Configuring labels
